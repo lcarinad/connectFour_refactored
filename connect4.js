@@ -1,9 +1,10 @@
 class Game {
-  constructor(HEIGHT, WIDTH) {
+  constructor(HEIGHT = 6, WIDTH = 7) {
     this.WIDTH = WIDTH;
     this.HEIGHT = HEIGHT;
     this.board = [];
     this.currPlayer = 1;
+    this.gameOver = false;
   }
 
   makeBoard() {
@@ -49,12 +50,14 @@ class Game {
     let timer = setInterval(function () {
       alert(msg);
       clearInterval(timer);
-    }, 500);
-    const pieces = document.querySelectorAll(".piece");
-    pieces.remove();
-    board[y][x] = undefined;
+    }, 300);
+    const top = document.querySelector("#column-top");
+    top.removeEventListener("click", this.handleClick);
   }
   handleClick(evt) {
+    if (this.gameOver) {
+      return;
+    }
     const x = +evt.target.id;
     let y = this.findSpotForCol(x);
     if (y === null) {
@@ -63,6 +66,7 @@ class Game {
     this.board[y][x] = this.currPlayer;
     this.placeInTable(y, x);
     if (this.checkForWin()) {
+      this.gameOver = true;
       return this.endGame(`Player ${this.currPlayer} won!`);
     }
     if (this.board.every((row) => row.every((cell) => cell))) {

@@ -12,7 +12,7 @@ class Game {
     }
   }
   makeHtmlBoard() {
-    this.board = document.querySelector("#board");
+    let htmlBoard = document.querySelector("#board");
     const top = document.createElement("tr");
     top.setAttribute("id", "column-top");
     top.addEventListener("click", this.handleClick.bind(this));
@@ -22,7 +22,7 @@ class Game {
       headCell.setAttribute("id", x);
       top.append(headCell);
     }
-    this.board.append(top);
+    htmlBoard.append(top);
 
     for (let y = 0; y < this.HEIGHT; y++) {
       const row = document.createElement("tr");
@@ -32,7 +32,7 @@ class Game {
         cell.setAttribute("id", `${y}-${x}`);
         row.append(cell);
       }
-      this.board.append(row);
+      htmlBoard.append(row);
     }
   }
   placeInTable(y, x) {
@@ -49,7 +49,7 @@ class Game {
   }
   handleClick(evt) {
     const x = +evt.target.id;
-
+    console.log(x);
     let y = this.findSpotForCol(x);
     if (y === null) {
       return;
@@ -73,7 +73,7 @@ class Game {
     return null;
   }
   checkForWin() {
-    const _win = function (cells) {
+    const _win = (cells) => {
       // Check four cells to see if they're all color of current player
       //  - cells: list of four (y, x) cells
       //  - returns true if all are legal coordinates & all match currPlayer
@@ -81,9 +81,9 @@ class Game {
       return cells.every(
         ([y, x]) =>
           y >= 0 &&
-          y < HEIGHT &&
+          y < this.HEIGHT &&
           x >= 0 &&
-          x < WIDTH &&
+          x < this.WIDTH &&
           this.board[y][x] === this.currPlayer
       );
     };
@@ -124,4 +124,6 @@ class Game {
   }
 }
 
-new Game(6, 7);
+const myGame = new Game(6, 7);
+myGame.makeBoard();
+myGame.makeHtmlBoard();

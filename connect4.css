@@ -1,4 +1,6 @@
-/* game board table */
+.hidden {
+  visibility: hidden;
+}
 h1 {
   text-shadow: 5px 5px 10px rgba(255, 156, 109, 0.4);
   color: #e8751a;

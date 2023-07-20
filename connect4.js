@@ -5,11 +5,7 @@ class Game {
     this.board = [];
     this.currPlayer = 1;
   }
-  // startGame() {
-  //   let startBtn = document.querySelector("#startBtn");
-  //   startBtn.addEventListener("click", this.makeBoard());
-  //   this.makeHtmlBoard;
-  // }
+
   makeBoard() {
     for (let y = 0; y < this.HEIGHT; y++) {
       this.board.push(Array.from({ length: this.WIDTH }));
@@ -131,6 +127,13 @@ class Game {
   }
 }
 
-const myGame = new Game(6, 7);
-myGame.makeBoard();
-myGame.makeHtmlBoard();
+let startBtn = document.querySelector("#startBtn");
+startBtn.addEventListener("click", function () {
+  const h1 = document.querySelector("h1");
+  const footer = document.querySelector("footer");
+  h1.classList.remove("hidden");
+  footer.classList.remove("hidden");
+  const myGame = new Game(6, 7);
+  myGame.makeBoard();
+  myGame.makeHtmlBoard();
+});

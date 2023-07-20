@@ -50,6 +50,9 @@ class Game {
       alert(msg);
       clearInterval(timer);
     }, 500);
+    const pieces = document.querySelectorAll(".piece");
+    pieces.remove();
+    board[y][x] = undefined;
   }
   handleClick(evt) {
     const x = +evt.target.id;
@@ -128,7 +131,9 @@ class Game {
 }
 
 let startBtn = document.querySelector("#startBtn");
-startBtn.addEventListener("click", function () {
+let htmlBoard = document.querySelector("#board");
+startBtn.addEventListener("click", function (e) {
+  htmlBoard.innerHTML = null;
   const h1 = document.querySelector("h1");
   const footer = document.querySelector("footer");
   h1.classList.remove("hidden");
@@ -136,4 +141,5 @@ startBtn.addEventListener("click", function () {
   const myGame = new Game(6, 7);
   myGame.makeBoard();
   myGame.makeHtmlBoard();
+  startBtn.innerText = "Restart Game";
 });

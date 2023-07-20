@@ -5,6 +5,11 @@ class Game {
     this.board = [];
     this.currPlayer = 1;
   }
+  // startGame() {
+  //   let startBtn = document.querySelector("#startBtn");
+  //   startBtn.addEventListener("click", this.makeBoard());
+  //   this.makeHtmlBoard;
+  // }
   makeBoard() {
     for (let y = 0; y < this.HEIGHT; y++) {
       this.board.push(Array.from({ length: this.WIDTH }));
@@ -45,11 +50,13 @@ class Game {
     spot.append(piece);
   }
   endGame(msg) {
-    alert(msg);
+    let timer = setInterval(function () {
+      alert(msg);
+      clearInterval(timer);
+    }, 500);
   }
   handleClick(evt) {
     const x = +evt.target.id;
-    console.log(x);
     let y = this.findSpotForCol(x);
     if (y === null) {
       return;

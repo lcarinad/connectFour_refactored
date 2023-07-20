@@ -1,16 +1,16 @@
 class Game {
-  constructor(HEIGHT = 6, WIDTH = 7) {
+  constructor(p1, p2, HEIGHT = 6, WIDTH = 7) {
     this.WIDTH = WIDTH;
     this.HEIGHT = HEIGHT;
     this.board = [];
-    this.currPlayer = 1;
+    this.players = [p1, p2];
+    this.currPlayer = p1;
     this.gameOver = false;
   }
 
   makeBoard() {
     for (let y = 0; y < this.HEIGHT; y++) {
       this.board.push(Array.from({ length: this.WIDTH }));
-      console.log(y);
     }
   }
   makeHtmlBoard() {
@@ -40,7 +40,7 @@ class Game {
   placeInTable(y, x) {
     const piece = document.createElement("div");
     piece.classList.add("piece");
-    piece.classList.add(`p${this.currPlayer}`);
+    piece.style.backgroundColor = this.currPlayer.color;
     piece.style.top = -50 * (y + 2);
 
     const spot = document.getElementById(`${y}-${x}`);
@@ -67,12 +67,13 @@ class Game {
     this.placeInTable(y, x);
     if (this.checkForWin()) {
       this.gameOver = true;
-      return this.endGame(`Player ${this.currPlayer} won!`);
+      return this.endGame(`Player ${this.currPlayer.color} won!`);
     }
     if (this.board.every((row) => row.every((cell) => cell))) {
       return this.endGame("Tie!");
     }
-    this.currPlayer = this.currPlayer === 1 ? 2 : 1;
+    this.currPlayer =
+      this.currPlayer === this.players[0] ? this.players[1] : this.players[0];
   }
   findSpotForCol(x) {
     for (let y = this.HEIGHT - 1; y >= 0; y--) {
@@ -133,17 +134,26 @@ class Game {
     return false;
   }
 }
+class Player {
+  constructor(color) {
+    this.color = color;
+  }
+}
 
 let startBtn = document.querySelector("#startBtn");
-let htmlBoard = document.querySelector("#board");
-startBtn.addEventListener("click", function (e) {
+
+startBtn.addEventListener("click", () => {
+  let p1 = new Player(document.querySelector("#p1-color").value);
+  let p2 = new Player(document.querySelector("#p2-color").value);
+  let htmlBoard = document.querySelector("#board");
   htmlBoard.innerHTML = null;
+
   const h1 = document.querySelector("h1");
   const footer = document.querySelector("footer");
   h1.classList.remove("hidden");
   footer.classList.remove("hidden");
-  const myGame = new Game(6, 7);
-  myGame.makeBoard();
-  myGame.makeHtmlBoard();
   startBtn.innerText = "Restart Game";
+  let newGame = new Game(p1, p2);
+  newGame.makeBoard();
+  newGame.makeHtmlBoard();
 });

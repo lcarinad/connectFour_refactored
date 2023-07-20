@@ -1,19 +1,37 @@
-<!doctype html>
+<!DOCTYPE html>
 <head>
   <title>Connect Four OO</title>
-  <link href="connect4.css" rel="stylesheet">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Monoton&family=Source+Code+Pro:wght@300;400&display=swap" rel="stylesheet">
+  <link
+    href="connect4.css"
+    rel="stylesheet" />
+  <link
+    rel="preconnect"
+    href="https://fonts.googleapis.com" />
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Monoton&family=Source+Code+Pro:wght@300;400&display=swap"
+    rel="stylesheet" />
 </head>
 <body>
+  <form id="colorForm">
+    <input
+      type="text"
+      id="p1-color"
+      placeholder="Player 1 Color" />
+    <input
+      type="text"
+      id="p2-color"
+      placeholder="Player 2 Color" />
+  </form>
   <button id="startBtn">Start Game</button>
-<h1 class="hidden">🔴Connect 4🔵</h1>
-<div id="game">
-  <table id="board"></table>
-</div>
+  <h1 class="hidden">🔴Connect 4🔵</h1>
+  <div id="game">
+    <table id="board"></table>
+  </div>
 
-<script src="connect4.js"></script>
-<footer class="hidden">Refactored by Lauren DeLago</footer>
+  <script src="connect4.js"></script>
+  <footer class="hidden">Refactored by Lauren DeLago</footer>
 </body>
-</html>

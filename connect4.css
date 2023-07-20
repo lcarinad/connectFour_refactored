@@ -39,12 +39,13 @@ button:hover {
   height: 80%;
   border-radius: 100px;
 }
+/* }
 .piece.p1 {
   background-color: #0046c7;
 }
 .piece.p2 {
   background-color: #d80002;
-}
+} */
 
 #column-top td {
   border: dashed 1px lightgray;

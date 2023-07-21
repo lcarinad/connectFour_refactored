@@ -145,6 +145,14 @@ let startBtn = document.querySelector("#startBtn");
 startBtn.addEventListener("click", () => {
   let p1 = new Player(document.querySelector("#p1-color").value);
   let p2 = new Player(document.querySelector("#p2-color").value);
+  if (
+    document.querySelector("#p1-color").value ===
+    document.querySelector("#p2-color").value
+  ) {
+    alert("Players must be different colors.");
+    return;
+  }
+
   let htmlBoard = document.querySelector("#board");
   htmlBoard.innerHTML = null;
 

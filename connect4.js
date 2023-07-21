@@ -67,7 +67,7 @@ class Game {
     this.placeInTable(y, x);
     if (this.checkForWin()) {
       this.gameOver = true;
-      return this.endGame(`Player ${this.currPlayer.color} won!`);
+      return this.endGame(`${this.currPlayer.color.toUpperCase()} Player won!`);
     }
     if (this.board.every((row) => row.every((cell) => cell))) {
       return this.endGame("Tie!");
@@ -157,9 +157,9 @@ startBtn.addEventListener("click", () => {
   htmlBoard.innerHTML = null;
 
   const h1 = document.querySelector("h1");
-  const footer = document.querySelector("footer");
+  const p = document.querySelector("p");
   h1.classList.remove("hidden");
-  footer.classList.remove("hidden");
+  p.classList.remove("hidden");
   startBtn.innerText = "Restart Game";
   let newGame = new Game(p1, p2);
   newGame.makeBoard();

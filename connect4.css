@@ -1,6 +1,11 @@
 .hidden {
   visibility: hidden;
 }
+p,
+footer {
+  font-family: "Source Code Pro", monospace;
+  font-size: 16px;
+}
 h1 {
   text-shadow: 5px 5px 10px rgba(255, 156, 109, 0.4);
   color: #e8751a;
@@ -53,4 +58,5 @@ button:hover {
 
 #column-top td:hover {
   background-color: #fcff82;
+  cursor: pointer;
 }

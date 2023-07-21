@@ -16,22 +16,23 @@
     rel="stylesheet" />
 </head>
 <body>
+  <h1>🔴 Connect 4 🔵</h1>
   <form id="colorForm">
     <input
       type="text"
       id="p1-color"
-      placeholder="Player 1 Color" />
+      placeholder="Player 1 Select Color" />
     <input
       type="text"
       id="p2-color"
-      placeholder="Player 2 Color" />
+      placeholder="Player 2 Select Color" />
   </form>
   <button id="startBtn">Start Game</button>
-  <h1 class="hidden">🔴Connect 4🔵</h1>
+
   <div id="game">
+    <p class="hidden">To drop a game piece, click on the top row!</p>
     <table id="board"></table>
   </div>
 
   <script src="connect4.js"></script>
-  <footer class="hidden">Refactored by Lauren DeLago</footer>
 </body>

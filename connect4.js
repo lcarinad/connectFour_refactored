@@ -85,10 +85,6 @@ class Game {
   }
   checkForWin() {
     const _win = (cells) => {
-      // Check four cells to see if they're all color of current player
-      //  - cells: list of four (y, x) cells
-      //  - returns true if all are legal coordinates & all match currPlayer
-
       return cells.every(
         ([y, x]) =>
           y >= 0 &&
@@ -155,7 +151,6 @@ startBtn.addEventListener("click", () => {
 
   let htmlBoard = document.querySelector("#board");
   htmlBoard.innerHTML = null;
-
   const h1 = document.querySelector("h1");
   const p = document.querySelector("p");
   h1.classList.remove("hidden");
